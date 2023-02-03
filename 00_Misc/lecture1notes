@@ -1,0 +1,17 @@
+#type coercion
+
+javascript can add a number and a string resulting a new string ie. 2 + "2" = "22"
+2 == "2" = true
+
+adding a additoinal equals signs evaluates the values
+2 === "2" = false
+
+
+#const
+const needs to be assigned a value when declared
+a const cant be reassigned. 
+
+
+#quotes
+"", '' , ``
+String interpolation with - we can write javascript in the string by encapuslation js with ${} ie `Hello: ${javascript}`
