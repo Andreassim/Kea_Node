@@ -19,7 +19,7 @@ console.log(result3);
 const anotherNumberOne = "1.10";
 const anotherNumberTwo = "2.30";
 
-const result4 = (parseFloat(anotherNumberOne) + parseFloat(anotherNumberTwo)).toFixed(2);
+const result4 = (Number(anotherNumberOne) + Number(anotherNumberTwo)).toFixed(2);
 console.log(result4);
 
 
