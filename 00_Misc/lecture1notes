@@ -15,3 +15,25 @@ a const cant be reassigned.
 #quotes
 "", '' , ``
 String interpolation with - we can write javascript in the string by encapuslation js with ${} ie `Hello: ${javascript}`
+
+
+
+REST API
+Serve data over http
+Stateless unless you add state
+
+client-server model
+client sends a request
+server sends a response
+
+conventions:
+ordering of the endpoints - get,post, put
+
+naming of methods
+http reqeust - endpoint - description
+get - /movies - Fetch all movies
+get - /movies/<id> - fetch specific movie by id
+post - /movies - create a new movie
+put - /movies/<id> - updates an existing movie
+patch - /movies/<id> - updates an existing movie
+delete - /movies/<id> - deletes an existing movie
