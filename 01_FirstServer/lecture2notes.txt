@@ -1,0 +1,6 @@
+"use strict" catches some errors or bad practices
+
+anatomy of a url
+
+protocol://domain/endpoint/path variable?query string
+http://localhost/kickdinosaur?size=1200
