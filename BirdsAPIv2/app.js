@@ -49,11 +49,15 @@ app.post('/birds', (req, res) => {
     res.status(200).send({data: newBird ,message: "Resource created"});
 });
 
-//Update only existing keys? or just replace with whatever? mysql way?
 app.put('/birds/:id', (req, res) => {
     const id = Number(req.params.id);
     const specificBirdIndex = birdsList.findIndex(bird => bird.id === id);
     if(specificBirdIndex != -1){
+        birdsList[specificBirdIndex] = {
+            ...req.body,
+            id: id
+        };
+
         res.status(200).send({data: birdsList[specificBirdIndex], message: "Resource updated"});
         return;
     }
@@ -65,22 +69,12 @@ app.patch('/birds/:id', (req, res) => {
     const id = Number(req.params.id);
     const specificBirdIndex = birdsList.findIndex(bird => bird.id === id);
     if(specificBirdIndex != -1){
-        const bodyKeys = Object.keys(req.body);
-        const birdKeys = Object.keys(birdsList[specificBirdIndex]);
-
-        console.log(bodyKeys, birdKeys);
-        const keysToChange = bodyKeys.forEach(key => {if(birdKeys.hasOwnProperty(key)){return key}});
-        console.log(keysToChange);
-
         birdsList[specificBirdIndex] = {
-            name: req.body.name,
-            name: req.body.name,
-            genus: req.body.genus,
-            conservationStatus: req.body.conservationStatus,
-            can_fly: req.body.can_fly,
-            ...birdsList[specificBirdIndex]
+            ...birdsList[specificBirdIndex],
+            ...req.body,
+            id: id
         };
-
+        
         res.status(200).send({data: birdsList[specificBirdIndex], message: "Resource updated"});
         return;
     }
