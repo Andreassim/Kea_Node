@@ -18,6 +18,10 @@
         {
             "src": "/",
             "dest": "public/frontpage/frontpage.html"
+        },
+        {
+            "src": "/(.+)",
+            "dest": "public/$1"
         }
     ]
   }
