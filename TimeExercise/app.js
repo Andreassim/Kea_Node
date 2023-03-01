@@ -7,12 +7,14 @@ app.use(express.static("public"));
 const lastGreatPrayerDay = new Date("2023-05-05");
 
 app.get("/", (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
     res.sendFile(__dirname+'/public/frontpage/frontpage.html');
 });
 
 
 app.get("/api/time" ,(req, res) => {
-    res.send({data: lastGreatPrayerDay})
+    res.setHeader('Content-Type', 'application/json');
+    res.send({data: lastGreatPrayerDay});
 });
 
 
