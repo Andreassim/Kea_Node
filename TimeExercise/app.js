@@ -16,7 +16,7 @@ app.get("/api/time" ,(req, res) => {
 });
 
 
-const PORT = 8080;
+const PORT = 80;
 app.listen(PORT, (error) => {
     if(error){
         console.log(error);
