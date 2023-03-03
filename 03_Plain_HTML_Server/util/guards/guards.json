@@ -1,0 +1,12 @@
+{
+    "guards":[
+        {
+            "name":"Hans",
+            "Seniority": "5 years"
+        },
+        {
+            "name":"Henning",
+            "Seniority": "2 years"
+        }
+    ]
+}

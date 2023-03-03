@@ -1,25 +1,22 @@
 const express = require('express');
-const app = express();
+const tankUtil = require('./util/tanks.js');
+const guardUtil = require('./util/guards/guards.js');
+const { getTanks, addTank } = require('./util/tanks.js');
 
+const app = express();
 app.use(express.static("public"));
 
 let visitorCount = 0;
-const tanks = [{
-    name: "Leopard", nationality: "German"
-},{
-    name: "Tiger", nationality: "German"
-},{
-    name: "M1 Abrams", version: "M1"
-}];
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname+'/public/frontpage/frontpage.html');
 });
-
 app.get("/tanks", (req, res) => {
     res.sendFile(__dirname+'/public/tanks/tanks.html');
 });
-
+app.get("/guards", (req, res) => {
+    res.sendFile(__dirname+'/public/guards/guards.html');
+});
 app.get("/visitors", (req, res) => {
     res.sendFile(__dirname+'/public/visitors/visitors.html');
 });
@@ -37,6 +34,10 @@ app.get("/api/visitors", (req, res) => {
 
 app.put("/api/visitors", (req, res) => {
     res.send({data: ++visitorCount})
+});
+
+app.get("/api/guards", (req, res) => {
+    res.send({data: guardUtil.getGuards()})
 });
 
 const PORT = 8080;
