@@ -14,18 +14,30 @@ app.get("/", (req, res) => {
 app.get("/tanks", (req, res) => {
     res.sendFile(__dirname+'/public/tanks/tanks.html');
 });
+/*
 app.get("/guards", (req, res) => {
     res.sendFile(__dirname+'/public/guards/guards.html');
 });
+*/
 app.get("/visitors", (req, res) => {
     res.sendFile(__dirname+'/public/visitors/visitors.html');
+});
+
+
+//redirect
+app.get("/api/guards", (req, res) => {
+    console.log(req.query);
+    if(req.query.passport === 'theskyisblue'){
+        res.redirect('/api/tanks')
+    }
+    res.send({ message : "you are not allowed to see the tanks, give us the secret in the query string with the key passport"})
 });
 
 
 // API //
 
 app.get("/api/tanks", (req, res) => {
-    res.send({data: tanks});
+    res.send({data: tankUtil.getTanks()});
 });
 
 app.get("/api/visitors", (req, res) => {
@@ -36,10 +48,11 @@ app.put("/api/visitors", (req, res) => {
     res.send({data: ++visitorCount})
 });
 
+/*
 app.get("/api/guards", (req, res) => {
     res.send({data: guardUtil.getGuards()})
 });
-
+*/
 const PORT = 8080;
 app.listen(PORT, (error) => {
     if(error){
